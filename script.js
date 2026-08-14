@@ -36,8 +36,10 @@ function nextPage(currentId, nextId) {
     }, 500); // Wait for fade out
 }
 
-// Page 1: Dodging NO Button
-function dodgeButton() {
+// Page 1: Dodging NO Button (100% Unclickable)
+function dodgeButton(e) {
+    if(e) e.preventDefault(); // Ye galti se hone wale click ko block kar dega
+    
     const noBtn = document.getElementById('noBtn');
     
     // Calculate random position considering window boundaries
@@ -51,6 +53,7 @@ function dodgeButton() {
     noBtn.style.left = randomX + 'px';
     noBtn.style.top = randomY + 'px';
 }
+
 
 // Page 3: Save Date & Time
 function saveDateTime() {
