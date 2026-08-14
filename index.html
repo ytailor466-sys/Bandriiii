@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will you go on a date with me?</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #fce4ec; 
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+            margin: 0;
+        }
+        h1 {
+            color: #d81b60;
+            text-align: center;
+            margin-bottom: 20px;
+            padding: 0 20px;
+        }
+        .btn-container {
+            position: relative;
+            width: 100%;
+            height: 150px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+        button {
+            padding: 12px 35px;
+            font-size: 20px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        #yesBtn {
+            background-color: #f06292;
+            color: white;
+            z-index: 2;
+        }
+        #yesBtn:hover {
+            background-color: #e91e63;
+            transform: scale(1.1);
+        }
+        #noBtn {
+            background-color: #ffffff;
+            color: #d81b60;
+            position: absolute;
+            z-index: 1;
+        }
+        .image-container img {
+            width: 250px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="image-container">
+        <!-- Dog Image -->
+        <img id="mainImage" src="https://media.giphy.com/media/c7m7O1CbS2hZq/giphy.gif" alt="Cute dog">
+    </div>
+
+    <h1 id="questionText">Will you go on a date with me? 🌸</h1>
+
+    <div class="btn-container">
+        <button id="yesBtn" onclick="saidYes()">YES ♥</button>
+        <button id="noBtn" onmouseover="moveNoButton()" onclick="moveNoButton()" ontouchstart="moveNoButton()">NO ✖</button>
+    </div>
+
+    <script>
+        function moveNoButton() {
+            const noBtn = document.getElementById('noBtn');
+            const x = Math.random() * (window.innerWidth - noBtn.offsetWidth - 20);
+            const y = Math.random() * (window.innerHeight - noBtn.offsetHeight - 20);
+            
+            noBtn.style.position = 'fixed';
+            noBtn.style.left = `${Math.abs(x)}px`;
+            noBtn.style.top = `${Math.abs(y)}px`;
+        }
+
+        function saidYes() {
+            document.getElementById('questionText').innerText = "Yay! See you soon! 🥰";
+            document.getElementById('mainImage').src = "https://media.giphy.com/media/26BRv0ThflsHCqDrG/giphy.gif"; 
+            
+            document.getElementById('yesBtn').style.display = "none";
+            document.getElementById('noBtn').style.display = "none";
+        }
+    </script>
+
+</body>
+</html>
